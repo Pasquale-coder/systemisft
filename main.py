@@ -1,6 +1,5 @@
-import tkinter as tk
 from tkinter import *
-from tkinter import Frame ,messagebox
+import tkinter as tk
 import Funzioni
 import mysql.connector
 mydb = mysql.connector.connect(
@@ -10,70 +9,63 @@ mydb = mysql.connector.connect(
         database="systemisft"
     )
 
-root = tk.Tk()
-
-root.geometry('1000x1000')
-root.resizable(False, False)
-root.title('Label Widget Demo')
-
-
-CCliente = tk.Canvas(root, width=400, height=300)
-CCliente.pack()
-
-#entry nome cliente
-Cliente= tk.Entry(root,width=100)
-Cliente.insert(0,Funzioni.customer(mydb))
-Cliente.pack()
-
-#label toner
-LCiano= Label(root,text="ciano")
-LCiano.pack()
-
-#label data consegna ed entry
-CLDataconsegnac= Label(root,text="data consegna")
-CLDataconsegnac.pack()
-CE_dataconsegna=tk.Entry(root,width=20)
-CE_dataconsegna.pack()
-CE_dataconsegna.insert(0,Funzioni.CL_dataconsegna(mydb))
-
-#label ed entry contatore
-LC_contatore= Label(root,text="Contatore")
-LC_contatore.pack()
-EC_contatore=tk.Entry(root,width=20)
-EC_contatore.pack()
-EC_contatore.insert(0,Funzioni.C_contatore(mydb))
+w1 = Tk()
+w1.geometry("1000x1000")
+w1.title("Clienti")
+def open(mydb,id):
+    w2 = Toplevel()
+    w2.title(Funzioni.EC_cliente(mydb,id))
+    w2.geometry("1000x1000")
+    # entry nome cliente
+    EC_cliente = tk.Entry(w2, width=100)
+    EC_cliente.insert(0, Funzioni.EC_cliente(mydb,1))
+    EC_cliente.pack()
 
 
-#label ed entry previsione
-LC_previsione=Label(root,text=("Previsione"))
-LC_previsione.pack()
-EC_rprevisione=tk.Entry(root,width=20)
-EC_rprevisione.pack()
-EC_rprevisione.insert(0,Funzioni.EC_previsione(mydb))
+    # label toner
+    LCiano = Label(w2, text="ciano")
+    LCiano.pack()
 
-#label ed entry data scorta
-LC_datascorta=Label(root,text=("Data Scorta"))
-LC_datascorta.pack()
-EC_datascorta=tk.Entry(root,width=20)
-EC_datascorta.pack()
-EC_datascorta.insert(0,Funzioni.EC_datascorta(mydb))
+    # label data consegna ed entry
+    LCDataconsegnac = Label(w2, text="data consegna")
+    LCDataconsegnac.pack()
+    EC_dataconsegna = tk.Entry(w2, width=20)
+    EC_dataconsegna.pack()
+    EC_dataconsegna.insert(0, Funzioni.EC_dataconsegna(mydb,1))
 
-#label ed entry scorta
-LC_scorta=Label(root,text=("Scorta"))
-LC_scorta.pack()
-EC_scorta=tk.Entry(root,width=20)
-EC_scorta.pack()
-EC_scorta.insert(0,Funzioni.EC_scorta(mydb))
+    # label ed entry contatore
+    LC_contatore = Label(w2, text="Contatore")
+    LC_contatore.pack()
+    EC_contatore = tk.Entry(w2, width=20)
+    EC_contatore.pack()
+    EC_contatore.insert(0, Funzioni.EC_contatore(mydb,1))
 
+    # label ed entry previsione
+    LC_previsione = Label(w2, text=("Previsione"))
+    LC_previsione.pack()
+    EC_rprevisione = tk.Entry(w2, width=20)
+    EC_rprevisione.pack()
+    EC_rprevisione.insert(0, Funzioni.EC_previsione(mydb,1))
 
+    # label ed entry data scorta
+    LC_datascorta = Label(w2, text=("Data Scorta"))
+    LC_datascorta.pack()
+    EC_datascorta = tk.Entry(w2, width=20)
+    EC_datascorta.pack()
+    EC_datascorta.insert(0, Funzioni.EC_datascorta(mydb,1))
 
+    # label ed entry scorta
+    LC_scorta = Label(w2, text=("Scorta"))
+    LC_scorta.pack()
+    EC_scorta = tk.Entry(w2, width=20)
+    EC_scorta.pack()
+    EC_scorta.insert(0, Funzioni.EC_scorta(mydb,1))
 
-BCliente = tk.Button(text='Update database', command=lambda: Funzioni.update(mydb,Cliente))
-BCliente.pack()
-CCliente.create_window(200, 180, window=BCliente)
-CCliente.create_window(200, 140, window=Cliente)
+    #bottone per l'aggiornamento dei dati del database
+    BCliente = tk.Button(w2,text='Aggiorna database', command=lambda: Funzioni.aggiorna_database(mydb,1,EC_cliente.get(),EC_dataconsegna.get(),EC_contatore.get(),EC_rprevisione.get(),EC_datascorta.get(),EC_scorta.get()))
+    BCliente.pack()
 
 
 
-root.mainloop()
-
+b1=Button(w1,text="A & L Assistenza elettrodomestici Lombardia SNC",command=lambda:open(mydb,1)).pack(pady=10)
+w1.mainloop()
