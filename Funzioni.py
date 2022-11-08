@@ -68,8 +68,8 @@ def EC_scorta(mydb,id):
 
 
 def aggiorna_database(mydb,id,cliente,dataconsegna,contatore,previsione,datascorta,scorta):
-   bool fcliente,fdataconsegna,fcontatore,fprevisione,fdatascorta,fscorta=false
-   fcliente=true
+   bool fcliente,fdataconsegna,fcontatore,fprevisione,fdatascorta,fscorta=False
+   fcliente=True
 
 
 
