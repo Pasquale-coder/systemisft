@@ -36,7 +36,7 @@ def toner(mydb,id,colore):
    
   
 """
-def EC_cliente(mydb,id):
+def E_cliente(mydb,id):
     mycursor = mydb.cursor(mydb)
     mycursor.execute("SELECT Nome_CLiente FROM Clienti where ID_Cliente="+str(id))
     risultato = []
@@ -45,60 +45,192 @@ def EC_cliente(mydb,id):
     risultato = str(risultato)[2:-2]
     return (risultato)
 
-def EC_dataconsegna(mydb,id):
+def E_dataconsegna(mydb,id,colore):
     mycursor = mydb.cursor(mydb)
-    mycursor.execute("SELECT C_DataConsegna FROM fotocopiatori where Cliente=1" + str(id))
-    risultato = []
-    for i in mycursor.fetchall():
-        risultato.extend(i)
-    risultato = str(risultato)[15:-2]
-    return (risultato)
-
-    """ 
-    mycursor = mydb.cursor(mydb)
-    mycursor.execute("SELECT C_DataConsegna FROM fotocopiatori where Cliente=1" + str(id))
-    risultato = []
-    for i in mycursor.fetchall():
-        risultato.extend(i)
-    return (risultato)
-    """
-def EC_contatore(mydb,id):
-    mycursor = mydb.cursor(mydb)
-    mycursor.execute("SELECT C_Contatore FROM fotocopiatori where Cliente=1" + str(id))
-    risultato = []
-    for i in mycursor.fetchall():
-        risultato.extend(i)
-    risultato = str(risultato)[1:-1]
-    return (risultato)
-
-
-def EC_previsione(mydb,id):
-    mycursor = mydb.cursor(mydb)
-    mycursor.execute("SELECT C_Previsione FROM fotocopiatori where Cliente=1"+str(id))
-    risultato = []
-    for i in mycursor.fetchall():
-        risultato.extend(i)
-    risultato = str(risultato)[1:-1]
+    if colore=="ciano":
+        mycursor.execute("SELECT C_DataConsegna FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[15:-2]
+    elif colore=="giallo":
+        mycursor.execute("SELECT Y_DataConsegna FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[15:-2]
+    elif colore=="nero":
+        mycursor.execute("SELECT K_DataConsegna FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[15:-2]
+    elif colore=="magenta":
+        mycursor.execute("SELECT M_DataConsegna FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[15:-2]
     return (risultato)
 
 
-def EC_datascorta(mydb,id):
+def E_contatore(mydb,id,colore):
     mycursor = mydb.cursor(mydb)
-    mycursor.execute("SELECT C_DataScorta FROM fotocopiatori where Cliente=1" + str(id))
-    risultato = []
-    for i in mycursor.fetchall():
-        risultato.extend(i)
-    risultato = str(risultato)[1:-1]
+    if colore=="ciano":
+        mycursor.execute("SELECT C_Contatore FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore=="giallo":
+        mycursor.execute("SELECT Y_Contatore FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore=="nero":
+        mycursor.execute("SELECT K_Contatore FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore=="magenta":
+        mycursor.execute("SELECT M_Contatore FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
     return (risultato)
 
-def EC_scorta(mydb,id):
+def E_previsione(mydb,id,colore):
     mycursor = mydb.cursor(mydb)
-    mycursor.execute("SELECT C_Scorta FROM fotocopiatori where Cliente=" + str(id))
+    if colore=="ciano":
+        mycursor.execute("SELECT C_Previsione FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore=="giallo":
+        mycursor.execute("SELECT Y_Previsione FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore=="nero":
+        mycursor.execute("SELECT K_Previsione FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore=="magenta":
+        mycursor.execute("SELECT M_Previsione FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    return (risultato)
+
+
+
+def E_datascorta(mydb,id,colore):
+    mycursor = mydb.cursor(mydb)
+    if colore == "ciano":
+        mycursor.execute("SELECT C_DataScorta FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore == "giallo":
+        mycursor.execute("SELECT Y_DataScorta FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore == "nero":
+        mycursor.execute("SELECT K_DataScorta FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore == "magenta":
+        mycursor.execute("SELECT M_DataScorta FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    return (risultato)
+
+def E_scorta(mydb,id,colore):
+    mycursor = mydb.cursor(mydb)
+    if colore == "ciano":
+        mycursor.execute("SELECT C_Scorta FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore == "giallo":
+        mycursor.execute("SELECT Y_Scorta FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore == "nero":
+        mycursor.execute("SELECT K_Scorta FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    elif colore == "magenta":
+        mycursor.execute("SELECT M_Scorta FROM fotocopiatori where Cliente=" + str(id))
+        risultato = []
+        for i in mycursor.fetchall():
+            risultato.extend(i)
+        risultato = str(risultato)[1:-1]
+    return (risultato)
+
+
+def EV_datacambio(mydb,id):
+    mycursor = mydb.cursor(mydb)
+    mycursor.execute("SELECT V_DataCambio FROM fotocopiatori where Cliente=" + str(id))
+    risultato = []
+    for i in mycursor.fetchall():
+       risultato.extend(i)
+    return (risultato)
+
+def EV_scorta(mydb,id):
+    mycursor = mydb.cursor(mydb)
+    mycursor.execute("SELECT V_Scorta FROM fotocopiatori where Cliente=" + str(id))
     risultato = []
     for i in mycursor.fetchall():
         risultato.extend(i)
-    risultato = str(risultato)[1:-1]
     return (risultato)
+
+def E_modello(mydb,id):
+    mycursor = mydb.cursor(mydb)
+    mycursor.execute("SELECT Modello FROM fotocopiatori where Cliente=" + str(id))
+    risultato = []
+    for i in mycursor.fetchall():
+        risultato.extend(i)
+    return (risultato)
+
+def E_seriale(mydb,id):
+    mycursor = mydb.cursor(mydb)
+    mycursor.execute("SELECT Seriale FROM fotocopiatori where Cliente=" + str(id))
+    risultato = []
+    for i in mycursor.fetchall():
+        risultato.extend(i)
+    return (risultato)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
