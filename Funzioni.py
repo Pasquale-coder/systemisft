@@ -48,25 +48,25 @@ def E_cliente(mydb,id):
 def E_dataconsegna(mydb,id,colore):
     mycursor = mydb.cursor(mydb)
     if colore=="ciano":
-        mycursor.execute("SELECT C_DataConsegna FROM fotocopiatori where Cliente=" + str(id))
+        mycursor.execute("SELECT DATE_FORMAT(C_DataConsegna,'%d/%m/%Y') FROM fotocopiatori where Cliente=" + str(id))
         risultato = []
         for i in mycursor.fetchall():
             risultato.extend(i)
         risultato = str(risultato)[15:-2]
     elif colore=="giallo":
-        mycursor.execute("SELECT Y_DataConsegna FROM fotocopiatori where Cliente=" + str(id))
+        mycursor.execute("SELECT DATE_FORMAT(Y_DataConsegna,'%d/%m/%Y') FROM fotocopiatori where Cliente=" + str(id))
         risultato = []
         for i in mycursor.fetchall():
             risultato.extend(i)
         risultato = str(risultato)[15:-2]
     elif colore=="nero":
-        mycursor.execute("SELECT K_DataConsegna FROM fotocopiatori where Cliente=" + str(id))
+        mycursor.execute("SELECT DATE_FORMAT(K_DataConsegna,'%d/%m/%Y') FROM fotocopiatori where Cliente=" + str(id))
         risultato = []
         for i in mycursor.fetchall():
             risultato.extend(i)
         risultato = str(risultato)[15:-2]
     elif colore=="magenta":
-        mycursor.execute("SELECT M_DataConsegna FROM fotocopiatori where Cliente=" + str(id))
+        mycursor.execute("SELECT DATE_FORMAT(M_DataConsegna,'%d/%m/%Y') FROM fotocopiatori where Cliente=" + str(id))
         risultato = []
         for i in mycursor.fetchall():
             risultato.extend(i)
@@ -135,25 +135,25 @@ def E_previsione(mydb,id,colore):
 def E_datascorta(mydb,id,colore):
     mycursor = mydb.cursor(mydb)
     if colore == "ciano":
-        mycursor.execute("SELECT C_DataScorta FROM fotocopiatori where Cliente=" + str(id))
+        mycursor.execute("SELECT DATE_FORMAT(C_DataScorta,'%d/%m/%Y') FROM fotocopiatori where Cliente=" + str(id))
         risultato = []
         for i in mycursor.fetchall():
             risultato.extend(i)
         risultato = str(risultato)[1:-1]
     elif colore == "giallo":
-        mycursor.execute("SELECT Y_DataScorta FROM fotocopiatori where Cliente=" + str(id))
+        mycursor.execute("SELECT DATE_FORMAT(Y_DataScorta,'%d/%m/%Y') FROM fotocopiatori where Cliente=" + str(id))
         risultato = []
         for i in mycursor.fetchall():
             risultato.extend(i)
         risultato = str(risultato)[1:-1]
     elif colore == "nero":
-        mycursor.execute("SELECT K_DataScorta FROM fotocopiatori where Cliente=" + str(id))
+        mycursor.execute("SELECT DATE_FORMAT(K_DataScorta,'%d/%m/%Y') FROM fotocopiatori where Cliente=" + str(id))
         risultato = []
         for i in mycursor.fetchall():
             risultato.extend(i)
         risultato = str(risultato)[1:-1]
     elif colore == "magenta":
-        mycursor.execute("SELECT M_DataScorta FROM fotocopiatori where Cliente=" + str(id))
+        mycursor.execute("SELECT DATE_FORMAT(M_DataScorta,'%d/%m/%Y') FROM fotocopiatori where Cliente=" + str(id))
         risultato = []
         for i in mycursor.fetchall():
             risultato.extend(i)
@@ -191,7 +191,7 @@ def E_scorta(mydb,id,colore):
 
 def EV_datacambio(mydb,id):
     mycursor = mydb.cursor(mydb)
-    mycursor.execute("SELECT V_DataCambio FROM fotocopiatori where Cliente=" + str(id))
+    mycursor.execute("SELECT DATE_FORMAT(V_DataCambio,'%d/%m/%Y) FROM fotocopiatori where Cliente=" + str(id))
     risultato = []
     for i in mycursor.fetchall():
        risultato.extend(i)
