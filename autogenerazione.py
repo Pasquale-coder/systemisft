@@ -13,16 +13,25 @@ w1 = Tk()
 w1.title("Clienti")
 
 
-n=10
-
+mycursor = mydb.cursor(mydb)
+mycursor.execute("SELECT COUNT(cliente) from fotocopiatori where cliente=9;")
+risultato=mycursor.fetchone()
+num=risultato[0]
 #Defining the row and column
 i=3
 
+def nome(j):
+    mycursor = mydb.cursor(mydb)
+    mycursor.execute("SELECT modello from fotocopiatori where cliente="+str(9+j))
+    ris=mycursor.fetchone()
+    return ris
+
 #Iterating over the numbers till n and
 #creating the button
-for j in range(n):
-   mybutton= Button(w1, text=j)
+for j in range (num):
+   mybutton= Button(w1, text= nome(j))
    mybutton.grid(row=i, column=j)
+
 
 
 
