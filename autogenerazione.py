@@ -1,5 +1,4 @@
 from tkinter import *
-import mysql.connector
 import Funzioni
 """mydb = mysql.connector.connect(
         host="localhost",
@@ -42,10 +41,11 @@ def autogenerazione(mydb,id):
     w1 = Tk()
     w1.title("dispositivi")
     mycursor = mydb.cursor(mydb)
-    mycursor.execute("SELECT * from fotocopiatori where Cliente="+str(id))
-    if(mycursor.fetchall()):
-
-    else:
-
-
+    mycursor.execute("SELECT COUNT(id_stampante) from fotocopiatori where Cliente="+str(id))
+    risultato =mycursor.fetchone()
+    risultato=int(''.join(map(str, risultato)))
+    if(risultato>1):
+        print("maggiore")
+    elif(risultato==1):
+        print("uno solo")
     w1.mainloop()
