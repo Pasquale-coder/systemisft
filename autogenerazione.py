@@ -44,8 +44,15 @@ def autogenerazione(mydb,id):
     mycursor.execute("SELECT COUNT(id_stampante) from fotocopiatori where Cliente="+str(id))
     risultato =mycursor.fetchone()
     risultato=int(''.join(map(str, risultato)))
-    if(risultato>1):
-        print("maggiore")
-    elif(risultato==1):
-        print("uno solo")
+    if(risultato!=0):
+        for j in range(risultato):
+            mybutton=Button(w1, text=nome(mydb,id,j))
+            mybutton.grid(row=j,column=1)
+
     w1.mainloop()
+def nome(mydb,id,j):
+    id=id+j
+    mycursor = mydb.cursor(mydb)
+    mycursor.execute("SELECT modello,sede from fotocopiatori where id_stampante="+str(id))
+    ris = str(mycursor.fetchall())
+    return ris
