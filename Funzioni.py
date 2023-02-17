@@ -48,7 +48,7 @@ def E_cliente(mydb, id):
     return (risultato)
 
 
-def E_dataconsegna(mydb, id, colore):
+def E_dataconsegna(mydb, id, colore,idstampante):
     mycursor = mydb.cursor(mydb)
     if colore == "ciano":
         mycursor.execute("SELECT DATE_FORMAT(C_DataConsegna,'%d/%m/%Y') FROM fotocopiatori where Cliente=" + str(id))
