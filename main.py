@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 from Funzioni import nome
 
 import Funzioni
@@ -12,10 +13,10 @@ mydb = mysql.connector.connect(
     )
 
 w1 = Tk()
-
-
 w1.geometry("1000x1000")
 w1.title("Clienti")
+
+
 mycursor = mydb.cursor(mydb)
 mycursor.execute("SELECT COUNT(id_stampante) from fotocopiatori")
 risultato =mycursor.fetchone()
