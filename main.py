@@ -21,8 +21,11 @@ mycursor = mydb.cursor(mydb)
 mycursor.execute("SELECT COUNT(id_stampante) from fotocopiatori")
 risultato =mycursor.fetchone()
 risultato=int(''.join(map(str, risultato)))
+x=0
+y=0
 for j in range(risultato):
     cliente=Button(w1,text=nome(mydb,j+1),command=lambda k=j:autogenerazione.autogenerazione(mydb,k+1))
-    cliente.pack()
+    cliente.grid()
+
 
 w1.mainloop()

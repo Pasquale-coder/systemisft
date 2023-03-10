@@ -253,25 +253,12 @@ def informazioni(mydb,id,id_stampante):
         list2.append(Escortat)
 
 
+    def aggiornadb():
+        messaggio=tkinter.messagebox.askquestion("Confirm","Are you sure?")
 
-    aggiorna=Button(w2,text="aggiorna database",command=lambda: aggiornadb(mydb,list,list2))
+    aggiorna=Button(w2,text="aggiorna database",command=lambda: aggiornadb())
     aggiorna.pack()
     w2.mainloop()
-
-
-def aggiornadb(mydb,list,list2):
-    list3=[]
-    list4=[]
-    y=0
-    for i in range(len(list2)):
-        list3.append(list2[i].get())
-
-    for x in list:
-        if x != list3[y]:
-            list4.append(y)
-        y = y + 1
-
-
 
 
 
