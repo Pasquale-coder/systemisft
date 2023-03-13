@@ -12,8 +12,7 @@ def autogenerazione(mydb,id):
             mybutton=Button(w1, text=nome(mydb,id,j),command=lambda k=j:f.informazioni(mydb,id,(id+k)))
             mybutton.grid(row=j,column=1)
     w1.mainloop()
-def nome(mydb,id,j):
-    id=id+j
+def nome(mydb,id):
     mycursor = mydb.cursor(mydb)
     mycursor.execute("SELECT modello,seriale from fotocopiatori where id_stampante="+str(id))
     ris = str(mycursor.fetchall())
