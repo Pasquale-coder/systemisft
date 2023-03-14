@@ -27,3 +27,6 @@ for j in range(risultato):
 
 
 w1.mainloop()
+
+
+
